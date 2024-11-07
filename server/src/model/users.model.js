@@ -4,7 +4,7 @@ const bookingSchema = new mongoose.Schema({
   booking_id: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: "Booking", // Reference to a Booking model (assuming you have one)
+    ref: "Booking", // Reference to a Booking model
   },
   date: {
     type: Date,

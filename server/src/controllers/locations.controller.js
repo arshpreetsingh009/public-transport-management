@@ -21,7 +21,6 @@ async function postLocations(req, res) {
 async function getLocations(req, res) {
   try {
     const locations = await Location.find(); // Find all Location documents
-
     res.status(200).json({ locations });
   } catch (error) {
     res

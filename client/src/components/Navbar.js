@@ -1,3 +1,8 @@
+// import { FiShoppingCart } from "react-icons/fi";
+import NavButton from "./NavButton";
+import NavLinks from "./NavLinks";
+import { NavLink } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <div className=" border-b-[1px] border-gray-200 w-full bg-white">
@@ -9,10 +14,10 @@ const Navbar = () => {
         <NavLinks />
 
         <NavLink to="/cart">
-          <FiShoppingCart
+          {/* <FiShoppingCart
             className="text-gray-700 hover:text-black"
             size={22}
-          />
+          /> */}
         </NavLink>
       </nav>
     </div>
