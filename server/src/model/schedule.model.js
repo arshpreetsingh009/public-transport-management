@@ -1,16 +1,24 @@
 const mongoose = require("mongoose");
-
+const stopSchema = new mongoose.Schema({
+  stop_name: {
+    type: String,
+    required: true,
+  },
+  stop_time: {
+    type: Date,
+    required: true,
+  },
+  distance: {
+    type: Number,
+    required: true,
+  },
+});
 const scheduleSchema = new mongoose.Schema(
   {
     bus_id: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: "Bus", // Reference to a Bus model (assuming you have one)
-    },
-    route_id: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "Route", // Reference to a Route model
+      ref: "Bus", // Reference to the Bus model
     },
     departure_date: {
       type: Date,
@@ -24,6 +32,7 @@ const scheduleSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
+    stops: [stopSchema],
     available_seats: {
       type: Number,
       required: true,
