@@ -1,29 +1,23 @@
-import DropDown from "../components/DropDown";
-import { useFetchLocationsQuery } from "../store/api/locationApi";
+import SearchBus from "../components/SearchBus";
+import { useLazySearchBussesQuery } from "../store/api/bussesApi";
 
 const BookingPage = () => {
-  const { data, isFetching } = useFetchLocationsQuery();
-  if (!isFetching) {
-    console.log(isFetching);
-    console.log(data.locations[0].places);
+  const [triggerSearch, { data: searchResults, isLoading: searchLoading }] =
+    useLazySearchBussesQuery();
+  const searchBusses = (data) => {
+    console.log("clicked");
+    console.log(data);
+    if (data.pickup && data.drop) {
+      console.log("clicked");
+      triggerSearch(data);
+    }
+  };
+  if (!searchLoading) {
+    console.log(searchResults);
   }
   return (
     <div>
-      {isFetching ? (
-        <div></div>
-      ) : (
-        <div className="w-full h-[500px] flex bg-green-800">
-          <div className="flex p-[250px]">
-            <div className="flex">
-              <DropDown locations={data.locations[0].places} />
-              <DropDown locations={data.locations[0].places} />
-            </div>
-            <div>
-              <button className="h-8 w-32 bg-blue-800"> search </button>
-            </div>
-          </div>
-        </div>
-      )}
+      <SearchBus searchBusses={searchBusses} />
     </div>
   );
 };

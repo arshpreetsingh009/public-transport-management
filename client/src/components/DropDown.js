@@ -1,16 +1,16 @@
 import { useState } from "react";
 
-const DropDown = ({ locations }) => {
+const DropDown = ({ locations, handler }) => {
   const [isClicked, setIsClicked] = useState(false);
   const handleChange = (e) => {
-    // e.preventDefault();
-    // handler(e.target.value);
+    e.preventDefault();
+    handler(e.target.value);
   };
   return (
     <div>
       <select
         className="border-2 border-gray-600 md:w-56 w-28 p-1 rounded-md"
-        // onChange={handleChange}
+        onChange={handleChange}
       >
         {locations.map((location) => {
           return (

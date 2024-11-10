@@ -7,6 +7,6 @@ const {
 const scheduleRoute = express.Router();
 
 scheduleRoute.post("/postschedule", createSchedule);
-scheduleRoute.get("/getbusses", getBusses);
+scheduleRoute.post("/getbusses", getBusses);
 
 module.exports = scheduleRoute;
