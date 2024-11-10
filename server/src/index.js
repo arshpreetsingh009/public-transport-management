@@ -8,6 +8,7 @@ const PORT = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL;
 const scheduleRoute = require("./routes/schedule.routes");
 const LocationsRoute = require("./routes/locations.routes");
+const bussesRoute = require("./routes/busses.routes");
 
 const app = express();
 app.use(
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(morgan("combined"));
 app.use(scheduleRoute);
 app.use(LocationsRoute);
+app.use(bussesRoute);
 
 connectDB(DATABASE_URL);
 app.listen(PORT, () => {
